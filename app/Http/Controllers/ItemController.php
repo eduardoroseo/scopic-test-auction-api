@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ItemListRequest;
 use App\Http\Response\ApiResponse;
 use App\Services\ItemService;
-use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
@@ -18,8 +18,8 @@ class ItemController extends Controller
         $this->service = $service;
     }
 
-    public function index()
+    public function index(ItemListRequest $request)
     {
-        return ApiResponse::list($this->service->all());
+        return ApiResponse::list($this->service->all($request->validated()));
     }
 }

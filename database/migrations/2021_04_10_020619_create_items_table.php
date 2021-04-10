@@ -19,6 +19,7 @@ class CreateItemsTable extends Migration
             $table->text('description');
             $table->float('start_price');
             $table->float('price');
+            $table->timestamp('bid_expiration');
             $table->boolean('available')->default(1);
             $table->timestamps();
         });

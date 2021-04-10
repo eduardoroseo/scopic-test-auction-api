@@ -29,6 +29,7 @@ class ItemFactory extends Factory
             'description' => $this->faker->realText(),
             'start_price' => $price,
             'price' => $price,
+            'bid_expiration' => now()->addDay(),
         ];
     }
 }
