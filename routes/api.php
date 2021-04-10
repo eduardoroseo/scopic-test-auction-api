@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutoBidConfigController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\User\AuthController;
 use Illuminate\Http\Request;
@@ -25,5 +26,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::group(['prefix' => 'items'], function () {
         Route::get('', [ItemController::class, 'index']);
+    });
+
+    Route::group(['prefix' => 'auto-bid-config'], function () {
+        Route::get('', [AutoBidConfigController::class, 'show']);
+        Route::post('', [AutoBidConfigController::class, 'save']);
+        Route::delete('', [AutoBidConfigController::class, 'disable']);
     });
 });

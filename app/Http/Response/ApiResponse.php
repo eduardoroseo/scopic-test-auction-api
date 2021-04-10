@@ -18,7 +18,7 @@ class ApiResponse
         ], $http_code);
     }
 
-    public static function success(array $data = [], int $http_code = 200): JsonResponse
+    public static function success($data = null, int $http_code = 200): JsonResponse
     {
         return response()->json([
             'isOk' => true,

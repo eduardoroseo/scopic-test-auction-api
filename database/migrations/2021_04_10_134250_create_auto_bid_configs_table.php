@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemsTable extends Migration
+class CreateAutoBidConfigsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,16 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('auto_bid_configs', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->float('start_price');
-            $table->float('price');
-            $table->timestamp('bid_expiration');
-            $table->boolean('available')->default(1);
             $table->foreignId('user_id')
-                ->nullable()
                 ->constrained();
-            $table->boolean('auto_bidding')
+            $table->integer('auto_bidding_max_amount');
+            $table->integer('auto_bidding_current_amount')
                 ->default(0);
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 
@@ -37,6 +33,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('auto_bid_configs');
     }
 }
