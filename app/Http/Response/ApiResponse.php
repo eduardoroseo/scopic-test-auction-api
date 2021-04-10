@@ -4,6 +4,7 @@
 namespace App\Http\Response;
 
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\JsonResponse;
 
 class ApiResponse
@@ -23,5 +24,12 @@ class ApiResponse
             'isOk' => true,
             'content' => $data
         ], $http_code);
+    }
+
+    public static function list(LengthAwarePaginator $data): JsonResponse
+    {
+        $response = ['isOk' => true];
+
+        return response()->json($response += $data->toArray());
     }
 }
