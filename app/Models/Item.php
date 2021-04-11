@@ -15,4 +15,9 @@ class Item extends Model
         'start_price',
         'price'
     ];
+
+    public function buyer()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
