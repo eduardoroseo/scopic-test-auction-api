@@ -35,6 +35,7 @@ class ItemService
     public function doBid(Item $item, User $user, array $request): Model
     {
         $item->price = $request['bid_price'];
+        $item->auto_bidding = $request['auto_bidding'] ?? false;
         $item->user_id = $user->id;
         $item->save();
 
