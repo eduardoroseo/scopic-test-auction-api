@@ -21,6 +21,8 @@ class CreateItemsTable extends Migration
             $table->float('price');
             $table->timestamp('bid_expiration');
             $table->boolean('available')->default(1);
+            $table->string('picture')
+                ->nullable();
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained();

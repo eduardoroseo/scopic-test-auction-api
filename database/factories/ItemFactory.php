@@ -29,7 +29,23 @@ class ItemFactory extends Factory
             'description' => $this->faker->realText(),
             'start_price' => $price,
             'price' => $price,
+            'picture' => $this->imagesAvailable()[array_rand($this->imagesAvailable())],
             'bid_expiration' => now()->addMinutes(10),
+        ];
+    }
+
+    private function imagesAvailable(): array
+    {
+        return [
+            'image1',
+            'image2',
+            'image3',
+            'image4',
+            'image5',
+            'image6',
+            'image7',
+            'image8',
+            'image9',
         ];
     }
 }
