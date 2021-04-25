@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::group(['prefix' => 'items'], function () {
         Route::get('', [ItemController::class, 'index']);
+        Route::get('{item}', [ItemController::class, 'show']);
         Route::post('{item}/bid', [ItemController::class, 'doBid']);
     });
 

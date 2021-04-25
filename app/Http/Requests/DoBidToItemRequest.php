@@ -29,7 +29,7 @@ class DoBidToItemRequest extends FormRequest
                 'required',
                 'numeric',
                 function ($attribute, $value, $fail) {
-                    if ($this->item->price > $value) {
+                    if ($this->item->price >= $value) {
                         $fail('The '.
                             str_replace('_', ' ', $attribute) .
                             ' must to be greater than current bid.');
@@ -38,7 +38,7 @@ class DoBidToItemRequest extends FormRequest
             ],
             'auto_bidding' => [
                 'sometimes',
-                'accepted'
+                'boolean'
             ]
         ];
     }

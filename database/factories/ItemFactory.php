@@ -22,14 +22,30 @@ class ItemFactory extends Factory
      */
     public function definition()
     {
-        $price = $this->faker->randomFloat(2, 5, 50);
+        $price = $this->faker->randomFloat(null, 5, 50);
 
         return [
             'name' => Str::title($this->faker->words(3, true)),
             'description' => $this->faker->realText(),
             'start_price' => $price,
             'price' => $price,
-            'bid_expiration' => now()->addDay(),
+            'picture' => $this->imagesAvailable()[array_rand($this->imagesAvailable())],
+            'bid_expiration' => now()->addMinutes(10),
+        ];
+    }
+
+    private function imagesAvailable(): array
+    {
+        return [
+            'image1',
+            'image2',
+            'image3',
+            'image4',
+            'image5',
+            'image6',
+            'image7',
+            'image8',
+            'image9',
         ];
     }
 }

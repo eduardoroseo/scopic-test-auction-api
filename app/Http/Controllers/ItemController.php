@@ -25,6 +25,11 @@ class ItemController extends Controller
         return ApiResponse::list($this->service->all($request->validated()));
     }
 
+    public function show(Item $item)
+    {
+        return ApiResponse::success($this->service->show($item));
+    }
+
     public function doBid(Item $item, DoBidToItemRequest $request)
     {
         $updatedItem = $this->service->doBid($item, $request->user(), $request->validated());
