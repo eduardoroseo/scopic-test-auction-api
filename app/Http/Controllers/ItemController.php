@@ -27,7 +27,7 @@ class ItemController extends Controller
 
     public function show(Item $item)
     {
-        return ApiResponse::success($item);
+        return ApiResponse::success($this->service->show($item));
     }
 
     public function doBid(Item $item, DoBidToItemRequest $request)
